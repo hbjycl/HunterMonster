@@ -5,7 +5,7 @@ import com.hbjycl.entity.Hunter;
 public class Main{
 	public static void main(String[] args)
 	{
-		Hunter hunter = new Hunter("µØÓüÁìÖ÷", "ËªÖ®°§ÉËÖ®½£");
+		Hunter hunter = new Hunter("åœ°ç‹±é¢†ä¸»", "éœœä¹‹å“€ä¼¤ä¹‹å‰‘");
 		new Game(hunter).start();
 	}
 }

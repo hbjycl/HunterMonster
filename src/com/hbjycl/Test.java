@@ -1,27 +1,31 @@
 package com.hbjycl;
 
+import java.util.List;
+
 public class Test {
 
-	public static void main(String[] args)
-	{
-		for(int i = 0 ;i<100;i++)
-		{
-			System.out.println((int)(Math.random()*10));
-		}
-	  
+	public static void main(String[] args) {
+		School middle = new MiddleSchool();
+		middle.name = "123";
+		middle.show();
+		MiddleSchool m = (MiddleSchool) middle;
+		m.show1();
 	}
 }
-class Bag{
-	Book a = new Book(1);
-	Book b = new Book(2);
-	public Bag(){
-		System.out.println("bag");
+class School {
+	String name;
+	public void show(){
+		System.out.println(name);
 	}
 }
 
-class Book{
-	public Book(int name)
-	{
-		System.out.println("book"+name);
+class MiddleSchool extends School {
+	private int age;
+	public void show1(){
+		System.out.println("show1:"+name);
 	}
+	public void show(){
+		System.out.println("chidren:"+name);
+	}
+	
 }

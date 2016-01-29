@@ -2,21 +2,28 @@ package com.hbjycl;
 
 import com.hbjycl.entity.Hunter;
 import com.hbjycl.entity.Monster;
+import com.hbjycl.entity.Vampire;
 import com.hbjycl.util.GameUtil;
 
 public class Game {
 	Hunter hunter;
 	Monster m1, m2, m3, m4;
+	Vampire v1,v2,v3,v4;
 	public Game(Hunter hunter) {
 		this.hunter = hunter;
 		m1 = new Monster(1);
 		m2 = new Monster(2);
 		m3 = new Monster(3);
 		m4 = new Monster(4);
+		v1 = new Vampire(1);
+		v2 = new Vampire(2);
+		v3 = new Vampire(3);
+		v4 = new Vampire(4);
+		
 	}
 	public void start() {
 		while (true) {
-			int ran = GameUtil.randomRange(1, 5);
+			int ran = GameUtil.randomRange(1, 9);
 			switch (ran) {
 				case 1 :
 					hunter.fight(m1);
@@ -30,8 +37,20 @@ public class Game {
 				case 4 :
 					hunter.fight(m4);
 					break;
+				case 5 :
+					hunter.fight(v1);
+					break;
+				case 6 :
+					hunter.fight(v2);
+					break;
+				case 7 :
+					hunter.fight(v3);
+					break;
+				case 8 :
+					hunter.fight(v4);
+					break;
 				default :
-					System.out.println("°İÍĞ£¡ÕÒ¸öÕı³£µÄ");
+					System.out.println("æ‰¾ä¸åˆ°");
 					break;
 
 			}
@@ -43,10 +62,10 @@ public class Game {
 				end();
 				return;
 			}
-			// ÈÃ³ÌĞòĞİÏ¢ÈıÃë
+			// ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 			try {
 				System.out
-						.println("------------------¶ÔÊÖÑ°ÕÒÖĞ--------------------");
+						.println("------------------å¯»æ‰¾å¯¹æ‰‹ä¸­--------------------");
 				Thread.sleep(3000);
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -57,10 +76,10 @@ public class Game {
 
 	public void end() {
 		if (hunter.isLive()) {
-			System.out.println("-----------------¹§Ï²¹ı¹ØÁË!!!!----------------");
+			System.out.println("-----------------æ­å–œé€šå…³!!!!----------------");
 
 		} else {
-			System.out.println("´òÏÂ²»ÒªÆøÄÙ£¬Òª²»ÒªÖØĞÂÀ´¹ı");
+			System.out.println("å¤§ä¾ ä¸è¦æ°”é¦ï¼Œæ˜¯å¦å†æ¥ä¸€å±€ï¼Ÿ");
 		}
 	}
 }

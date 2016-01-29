@@ -2,31 +2,32 @@ package com.hbjycl.entity;
 
 import com.hbjycl.util.GameUtil;
 
-public class Monster extends Enemy {
+public class Vampire extends Enemy{
 
-	public Monster(int mt) {
-		setLive(true);
+	public Vampire(int vt) {
+		setLive(true); 
 		setHideRate(100);
-		if (mt == 1) {
-			setType("普通僵尸");
+		if (vt == 1)
+		{
+			setType("吸血蝙蝠");
 			setMaxLife(40);
 			setAttack(15);
 			setDefend(8);
 			setAgile(20);
-		} else if (mt == 2) {
-			setType("魔法僵尸");
+		} else if (vt == 2) {
+			setType("吸血鬼");
 			setMaxLife(35);
 			setAttack(27);
 			setDefend(5);
 			setAgile(25);
-		} else if (mt == 3) {
-			setType("肉盾僵尸");
+		} else if (vt == 3) {
+			setType("吸血僵尸");
 			setMaxLife(40);
 			setAttack(10);
 			setDefend(19);
 			setAgile(80);
-		} else if (mt == 4) {
-			setType("僵尸王");
+		} else if (vt == 4) {
+			setType("吸血女王");
 			setMaxLife(100);
 			setAttack(20);
 			setDefend(20);
@@ -34,7 +35,8 @@ public class Monster extends Enemy {
 		}
 		setCurLife(getMaxLife());
 	}
-
+	
+	@Override
 	public void kill(Hunter hunter) {
 		if (!this.isLive()) {
 			return;
@@ -44,9 +46,17 @@ public class Monster extends Enemy {
 		}
 		System.out.println(getType() + ":呼呼呼呼呼呼呼呼呼呼呼," + getType() + "杀向***"
 				+ hunter.getName() + "***");
-		hunter.injured(this);
+		int suckLife = hunter.injured(this);
+		setCurLife(getCurLife()+suckLife);
+		System.out.println(getType()+"吸收血量："+suckLife+"此时血量为:"+getCurLife());
+	}
+	
+	
+	public void getLife(int damage){
+		
 	}
 
+	@Override
 	public void injured(Hunter hunter) {
 		if (GameUtil.hidden(getAgile(), getHideRate())) {
 			System.out.println(getType() + "躲过了此次攻击！");

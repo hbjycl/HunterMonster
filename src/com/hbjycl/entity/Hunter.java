@@ -1,6 +1,5 @@
 package com.hbjycl.entity;
 
-import com.hbjycl.appconst.AppConst;
 import com.hbjycl.util.GameUtil;
 
 public class Hunter {
@@ -24,51 +23,52 @@ public class Hunter {
 		this.maxLife = curLife;
 		this.isLive = true;
 		this.attack = 25;
-		this.defend = 8;
+		this.defend = 10;
 		this.level = 1;
 		this.exp = 0;
 		this.agile = 35;
 		this.hideRate = 100;
 	}
 
-	public void fight(Monster monster) {
+	public void fight(Enemy enemy) {
 		if (!this.isLive()) {
 			return;
 		}
-		if (!monster.isLive()) {
+		if (!enemy.isLive()) {
 			return;
 		}
-		System.out.println("***" + this.name + "(ÉúÃüÖµ£º" + curLife + ")***»ÓÎè×Å"
-				+ this.weapon + "É±Ïò" + monster.getType());
-		monster.injured(this);
+		System.out.println("***" + this.name + "(ç”Ÿå‘½å€¼ï¼š" + curLife + ")***æŒ¥èˆç€"
+				+ this.weapon + "æ€å‘" + enemy.getType());
+		enemy.injured(this);
 	}
 
-	public void injured(Monster monster) {
+	public int injured(Enemy enemy) {
 		if (GameUtil.hidden(agile, hideRate)) {
-			System.out.println(name + "¶ã¹ıÁË´Ë´Î¹¥»÷£¡");
-			fight(monster);
-			return;
+			System.out.println(name + "èº²è¿‡äº†æ­¤æ¬¡æ”»å‡»ï¼");
+			fight(enemy);
+			return 0;
 		}
-		int lostLife = GameUtil.calLostLife(monster.getAttack(), defend);
-		System.out.println(name + "ÊÜÉËÁË£¬ËğÊ§ÉúÃüÖµ£º" + lostLife);
+		int lostLife = GameUtil.calLostLife(enemy.getAttack(), defend);
+		System.out.println(name + "å—ä¼¤äº†ï¼ŒæŸå¤±ç”Ÿå‘½å€¼ï¼š" + lostLife);
 		curLife -= lostLife;
 		if (this.curLife <= 0) {
 			dead();
-			return;
+			
 		}
-		System.out.println(name + "(ÉúÃüÖµ£º" + curLife + "):Ğ¡Ñù£¡ ¸Ò´òÎÒ£¡");
-		fight(monster);
+		System.out.println(name + "(ç”Ÿå‘½å€¼ï¼š" + curLife + "):å°æ ·ï¼ æ•¢æ‰“æˆ‘ï¼");
+		fight(enemy);
+		return lostLife;
 	}
 
 	public void dead() {
 		this.isLive = false;
-		System.out.println("°¡£¡Ìì¶ÊÓ¢²Å,Íæ¼Ò:" + name + "ËÀÍö£¡");
+		System.out.println("--ç©å®¶æ­»äº¡--" + name + "ï¼šå•Šï¼å¤©å¦’è‹±æ‰");
 		return;
 	}
 
-	public void expAdd(Monster monster) {
-		this.exp += monster.getMaxLife();
-		System.out.println("¹§Ï²Íæ¼Ò:" + name + ",±¾´Î»ñµÃ¾­Ñé£º" + exp);
+	public void expAdd(Enemy enemy) {
+		this.exp += enemy.getMaxLife();
+		System.out.println("æ­å–œç©å®¶:" + name + ",æœ¬æ¬¡è·å¾—ç»éªŒï¼š" + enemy.getMaxLife());
 		int needExp = 0;
 		for (int i = 1; i < this.level+1; i++) {
 			needExp += 50;
@@ -79,13 +79,13 @@ public class Hunter {
 	}
 
 	public void upgrade() {
-		this.attack += 4;
+		this.attack += 5;
 		this.defend += 3;
-		this.maxLife += 30;
+		this.maxLife += 40;
 		this.curLife = maxLife;
 		this.level++;
 		System.out.println("************" + this.name + ",Levle up************"
-				+ "µÈ¼¶Îª:" + level);
+				+ "ç­‰çº§ä¸º:" + level);
 	}
 
 	public int getCurLife() {
