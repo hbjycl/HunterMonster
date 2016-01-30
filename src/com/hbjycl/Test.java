@@ -5,27 +5,36 @@ import java.util.List;
 public class Test {
 
 	public static void main(String[] args) {
-		School middle = new MiddleSchool();
-		middle.name = "123";
-		middle.show();
-		MiddleSchool m = (MiddleSchool) middle;
-		m.show1();
+		for(int i = 0;i<100;i++)
+		{
+			System.out.println("");
+		}
+
 	}
 }
-class School {
+class Student {
 	String name;
-	public void show(){
-		System.out.println(name);
+	Book b;
+	public Student(String name,Book b)
+	{
+		super();
+		this.name = name;
+		this.b= b;
+	}
+
+	public void read(){
+		System.out.println(this.name+"正在读："+b);
 	}
 }
 
-class MiddleSchool extends School {
-	private int age;
-	public void show1(){
-		System.out.println("show1:"+name);
+class Book {
+	String name;
+	public Book(String name){
+		this.name = name;
 	}
-	public void show(){
-		System.out.println("chidren:"+name);
+
+	@Override
+	public String toString() {
+		return name;
 	}
-	
 }
