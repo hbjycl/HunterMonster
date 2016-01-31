@@ -13,21 +13,23 @@ public abstract class Enemy {
     private int agile;
     private int hideRate;
 
-    public void injured(Hunter hunter) {
+    public int injured(Hunter hunter) {
+        int lostLife = 0;
         if (GameUtil.hidden(getAgile(), getHideRate())) {
             System.out.println(getType() + "躲过了此次攻击！");
         } else {
-            int lostLife = GameUtil.calLostLife(hunter.getAttack(),
+           lostLife = GameUtil.calLostLife(hunter.getAttack(),
                     getDefend());
             setCurLife(getCurLife() - lostLife);
             System.out.println(getType() + "(生命值为:" + getCurLife()
                     + "):啊哦嗷嗷嗷嗷哦啊哦啊，" + getType() + "受伤了，损失生命值：" + lostLife);
             if (this.getCurLife() <= 0) {
                 dead(hunter);
-                return;
+                return 0;
             }
         }
         kill(hunter);
+        return lostLife;
     }
 
     public abstract void kill(Hunter hunter);

@@ -8,7 +8,7 @@ public class Hunter {
     private int maxLife;
     private String name;
     private boolean isLive;
-    private String weapon;
+    private Weapon weapon;
     private int attack;
     private int defend;
     private int level;
@@ -16,7 +16,7 @@ public class Hunter {
     private int agile;
     private int hideRate;
 
-    public Hunter(String name, String weapon) {
+    public Hunter(String name, Weapon weapon) {
         this.name = name;
         this.weapon = weapon;
         this.curLife = 100;
@@ -38,8 +38,9 @@ public class Hunter {
             return;
         }
         System.out.println("***" + this.name + "(生命值：" + curLife + ")***挥舞着"
-                + this.weapon + "杀向" + enemy.getType());
-        enemy.injured(this);
+                + this.weapon.getDesc() + "杀向" + enemy.getType());
+        weapon.demage(this,enemy);
+
     }
 
     public int injured(Enemy enemy) {
@@ -120,12 +121,28 @@ public class Hunter {
         this.isLive = isLive;
     }
 
-    public String getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(String weapon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public int getAgile() {
+        return agile;
+    }
+
+    public void setAgile(int agile) {
+        this.agile = agile;
+    }
+
+    public int getHideRate() {
+        return hideRate;
+    }
+
+    public void setHideRate(int hideRate) {
+        this.hideRate = hideRate;
     }
 
     public int getAttack() {

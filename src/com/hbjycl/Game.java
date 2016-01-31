@@ -16,7 +16,7 @@ public class Game {
 
     public Game(Hunter hunter) {
         this.hunter = hunter;
-        enemys = new ArrayList<>();
+        enemys = new ArrayList<Enemy>();
         enemys.add(new Monster(1));
         enemys.add(new Monster(2));
         enemys.add(new Monster(3));
