@@ -3,10 +3,12 @@ package com.hbjycl.entity;
 import com.hbjycl.util.GameUtil;
 
 public class Vampire extends Enemy{
+	private int suckBloodRate;
 
 	public Vampire(int vt) {
 		setLive(true); 
 		setHideRate(100);
+		setSuckBloodRate(20);
 		if (vt == 1)
 		{
 			setType("吸血蝙蝠");
@@ -53,8 +55,15 @@ public class Vampire extends Enemy{
 	
 	
 	public void suckLife(int damage){
-		setCurLife(getCurLife()+damage);
-		
+		int addLife = damage*getSuckBloodRate()/100;
+		System.out.println(getType()+"吸血成功，吸取"+addLife);
+		if(addLife+this.getCurLife()>=this.getMaxLife())
+		{
+			this.setCurLife(this.getMaxLife());
+		}
+		else{
+			this.setCurLife(this.getCurLife()+addLife);
+		}
 	}
 
 
@@ -66,4 +75,11 @@ public class Vampire extends Enemy{
 		hunter.expAdd(this);
 	}
 
+	public int getSuckBloodRate() {
+		return suckBloodRate;
+	}
+
+	public void setSuckBloodRate(int suckBloodRate) {
+		this.suckBloodRate = suckBloodRate;
+	}
 }

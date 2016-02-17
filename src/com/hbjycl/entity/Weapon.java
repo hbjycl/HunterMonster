@@ -6,9 +6,7 @@ package com.hbjycl.entity;
 public abstract class Weapon {
     private String desc;
     private String name;
-    private boolean hasSuckBlood;
-    private boolean hasDeA;
-    private boolean hasDeD;
+
 
     public Weapon() {
     }
@@ -32,30 +30,6 @@ public abstract class Weapon {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public boolean isHasSuckBlood() {
-        return hasSuckBlood;
-    }
-
-    public void setHasSuckBlood(boolean hasSuckBlood) {
-        this.hasSuckBlood = hasSuckBlood;
-    }
-
-    public boolean isHasDeA() {
-        return hasDeA;
-    }
-
-    public void setHasDeA(boolean hasDeA) {
-        this.hasDeA = hasDeA;
-    }
-
-    public boolean isHasDeD() {
-        return hasDeD;
-    }
-
-    public void setHasDeD(boolean hasDeD) {
-        this.hasDeD = hasDeD;
     }
 
     public abstract int demage(Hunter hunter, Enemy enemy);

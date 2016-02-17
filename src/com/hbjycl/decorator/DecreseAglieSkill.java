@@ -9,16 +9,43 @@ import com.hbjycl.entity.Weapon;
  */
 public class DecreseAglieSkill extends SkillDecorator {
     private Weapon weapon;
-    private int s;
+    private int deAgileNum;
 
+
+    public DecreseAglieSkill(Weapon weapon, int deAgileNum) {
+        this.weapon = weapon;
+        this.deAgileNum = deAgileNum;
+        this.setName(weapon.getName());
+    }
 
     @Override
     public String getDesc() {
-        return "降低敏捷的"+weapon.getDesc();
+        return "降低敏捷的" + weapon.getDesc();
     }
 
     @Override
     public int demage(Hunter hunter, Enemy enemy) {
-        return 0;
+
+        int damage = weapon.demage(hunter, enemy);
+        if (damage > 0) {
+
+            descreaseAglie(enemy);
+        }
+        return damage;
     }
+
+    private void descreaseAglie(Enemy enemy) {
+        int td = enemy.getAgile()-deAgileNum;
+        if(td<0)
+        {
+            enemy.setAgile(0);
+            System.out.println(enemy.getType()+"的敏捷下降为0");
+        }
+        else{
+            enemy.setAgile(td);
+            System.out.println(enemy.getType()+"的敏捷下降了:"+td);
+        }
+
+    }
+
 }
