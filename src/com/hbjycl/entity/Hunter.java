@@ -38,7 +38,7 @@ public class Hunter {
             return;
         }
         System.out.println("***" + this.name + "(生命值：" + curLife + ")***挥舞着"
-                + this.weapon.getDesc() + "杀向" + enemy.getType());
+                + this.weapon.getName()+"的"+weapon.getDesc() + "杀向" + enemy.getType());
         weapon.demage(this,enemy);
 
     }
