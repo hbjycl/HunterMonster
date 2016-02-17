@@ -1,66 +1,66 @@
 package com.hbjycl;
 
+import com.hbjycl.entity.Enemy;
 import com.hbjycl.entity.Hunter;
 import com.hbjycl.entity.Monster;
+import com.hbjycl.entity.Vampire;
 import com.hbjycl.util.GameUtil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Game {
-	Hunter hunter;
-	Monster m1, m2, m3, m4;
-	public Game(Hunter hunter) {
-		this.hunter = hunter;
-		m1 = new Monster(1);
-		m2 = new Monster(2);
-		m3 = new Monster(3);
-		m4 = new Monster(4);
-	}
-	public void start() {
-		while (true) {
-			int ran = GameUtil.randomRange(1, 5);
-			switch (ran) {
-				case 1 :
-					hunter.fight(m1);
-					break;
-				case 2 :
-					hunter.fight(m2);
-					break;
-				case 3 :
-					hunter.fight(m3);
-					break;
-				case 4 :
-					hunter.fight(m4);
-					break;
-				default :
-					System.out.println("∞›Õ–£°’“∏ˆ’˝≥£µƒ");
-					break;
+    Hunter hunter;
+    List<Enemy> enemys;
 
-			}
-			if (!hunter.isLive()) {
-				end();
-				return;
-			}
-			if (!m1.isLive() && !m2.isLive() && !m3.isLive() && !m4.isLive()) {
-				end();
-				return;
-			}
-			// »√≥Ã–Ú–›œ¢»˝√Î
-			try {
-				System.out
-						.println("------------------∂‘ ÷—∞’“÷–--------------------");
-				Thread.sleep(3000);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		}
+    public Game(Hunter hunter) {
+        this.hunter = hunter;
+        enemys = new ArrayList<Enemy>();
+        enemys.add(new Monster(1));
+        enemys.add(new Monster(2));
+        enemys.add(new Monster(3));
+        enemys.add(new Monster(4));
+        enemys.add(new Vampire(1));
+        enemys.add(new Vampire(2));
+        enemys.add(new Vampire(3));
+        enemys.add(new Vampire(4));
 
-	}
+    }
 
-	public void end() {
-		if (hunter.isLive()) {
-			System.out.println("-----------------πßœ≤π˝πÿ¡À!!!!----------------");
+    public void start() {
+        while (true) {
+            int ran = GameUtil.randomRange(0, enemys.size());
+            Enemy enemy = enemys.get(ran);
+            hunter.fight(enemy);
+            if (!enemy.isLive()) {
+                enemys.remove(ran);
+            }
+            if (!hunter.isLive()) {
+                end();
+                return;
+            }
+            if (enemys.size() <= 0) {
+                end();
+                return;
+            }
+            try {
+                System.out
+                        .println("------------------ÂØªÊâæÂØπÊâã‰∏≠--------------------");
+                Thread.sleep(3000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
-		} else {
-			System.out.println("¥Úœ¬≤ª“™∆¯ƒŸ£¨“™≤ª“™÷ÿ–¬¿¥π˝");
-		}
-	}
+    }
+
+    public void end() {
+        if (hunter.isLive()) {
+            System.out.println("-----------------ÊÅ≠ÂñúÈÄöÂÖ≥!!!!----------------");
+
+        } else {
+            System.out.println("Â§ß‰æ†‰∏çË¶ÅÊ∞îÈ¶ÅÔºåÊòØÂê¶ÂÜçÊù•‰∏ÄÂ±ÄÔºü");
+        }
+    }
 }
