@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74a5625a-27e0-424e-86c4-217046b96987" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/com/hbjycl/Game.class" afterPath="$PROJECT_DIR$/bin/com/hbjycl/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/com/hbjycl/Main.class" afterPath="$PROJECT_DIR$/bin/com/hbjycl/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/com/hbjycl/entity/Vampire.class" afterPath="$PROJECT_DIR$/bin/com/hbjycl/entity/Vampire.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hbjycl/Game.java" afterPath="$PROJECT_DIR$/src/com/hbjycl/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hbjycl/Main.java" afterPath="$PROJECT_DIR$/src/com/hbjycl/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hbjycl/decorator/DecreseAglieSkill.java" afterPath="$PROJECT_DIR$/src/com/hbjycl/decorator/DecreseAglieSkill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hbjycl/decorator/SuckLifeSkill.java" afterPath="$PROJECT_DIR$/src/com/hbjycl/decorator/SuckLifeSkill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hbjycl/entity/Vampire.java" afterPath="$PROJECT_DIR$/src/com/hbjycl/entity/Vampire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hbjycl/entity/Weapon.java" afterPath="$PROJECT_DIR$/src/com/hbjycl/entity/Weapon.java" />
     </list>
     <ignored path="HunterMonster.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -384,7 +381,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -837,7 +834,7 @@
       <workItem from="1454165336467" duration="47000" />
       <workItem from="1454165466645" duration="172000" />
       <workItem from="1455707419579" duration="2928000" />
-      <workItem from="1455711044275" duration="2280000" />
+      <workItem from="1455711044275" duration="2378000" />
     </task>
     <task id="LOCAL-00001" summary="kong">
       <created>1454165511001</created>
@@ -851,11 +848,17 @@
       <option name="project" value="LOCAL" />
       <updated>1455710246219</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="装饰着模式">
+      <created>1455713333549</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1455713333549</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10473000" />
+    <option name="totallyTimeSpent" value="10571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
